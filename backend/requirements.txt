@@ -6,4 +6,4 @@ requests
 pydantic-settings
 Pillow
 rembg
-onnxruntime==1.18.0
+onnxruntime
