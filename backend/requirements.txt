@@ -4,3 +4,4 @@ gunicorn
 python-multipart
 requests
 pydantic-settings
+Pillow
