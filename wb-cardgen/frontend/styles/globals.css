@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0c0f;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
