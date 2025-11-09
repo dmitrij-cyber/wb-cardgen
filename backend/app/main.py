@@ -1,5 +1,5 @@
 import os
-from background_service import remove_bg_replicate
+from .background_service import remove_bg_replicate
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import Response
 from fastapi import FastAPI
