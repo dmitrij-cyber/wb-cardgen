@@ -5,3 +5,5 @@ python-multipart
 requests
 pydantic-settings
 Pillow
+rembg
+onnxruntime
