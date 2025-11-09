@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import Response
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.staticfiles import StaticFiles  # ✅ добавлено
 from pydantic_settings import BaseSettings
 
 from app.background_service import remove_bg_replicate
@@ -16,14 +17,17 @@ settings = Settings()
 
 app = FastAPI()
 
-# ✅ CORS (разрешаем Vercel и любой источник)
+# ✅ CORS — разрешаем фронту общаться с API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # позже можно заменить на ["https://wb-cardgen.vercel.app"]
-    allow_credentials=False,  # важно! иначе * не работает
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ✅ Статика — важно! путь к экспортам
+app.mount("/static", StaticFiles(directory="data/static"), name="static")
 
 # ✅ Роуты
 app.include_router(upload.router, prefix="/upload")
