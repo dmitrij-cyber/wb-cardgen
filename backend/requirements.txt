@@ -3,4 +3,4 @@ uvicorn
 gunicorn
 python-multipart
 requests
-
+pydantic-settings
