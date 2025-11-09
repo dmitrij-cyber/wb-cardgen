@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: wb-cardgen-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+    rootDir: backend
+    autoDeploy: yes
+
+staticSites:
+  - name: wb-cardgen-frontend
+    buildCommand: npm install && npm run build && npm run export
+    publishPath: out
+    rootDir: frontend
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          name: wb-cardgen-backend
+          type: web
+          property: url
