@@ -14,7 +14,7 @@ class ValidateIn(BaseModel):
     path: str  # /static/exports/xxx.png
     preset: str = "WB_3x4"
 
-@router.post("/validate")  # или "/" если используешь prefix="/validate"
+@router.post("/check")
 def validate_card(body: ValidateIn):
     if not body.path.startswith("/static/"):
         return {"ok": False, "errors": ["path must start with /static/"]}
