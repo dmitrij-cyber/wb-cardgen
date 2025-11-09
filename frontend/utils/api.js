@@ -22,7 +22,7 @@ export async function generateCards(data) {
 }
 
 export async function validateCard(path) {
-  const res = await fetch(`${API_URL}/validate/validate`, {
+  const res = await fetch(`${API_URL}/validate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ path }),
